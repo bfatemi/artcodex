@@ -1,6 +1,18 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 2 notes
+
+The first note identifies this as a new submission.
+
+The second note is:
+
+```
+checking for future file timestamps ... NOTE
+unable to verify current time
+```
+
+This appears to be an environmental clock-verification limitation on the local
+Windows check machine. The package source contains no future-dated files.
 
 ## Test environments
 
