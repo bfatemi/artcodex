@@ -1,0 +1,15 @@
+^\.git$
+^\.gitignore$
+^\.github$
+^\.Rproj\.user$
+^artcodex\.Rproj$
+^.*\.Rcheck$
+^.*\.tar\.gz$
+^AGENTS\.md$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
+^LICENSE\.md$
+^SECURITY\.md$
+^cran-comments\.md$
+^\.lintr$
+^CITATION\.cff$

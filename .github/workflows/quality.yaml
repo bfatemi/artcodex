@@ -1,0 +1,39 @@
+name: quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::covr
+            any::lintr
+            any::devtools
+          needs: coverage
+      - name: Lint
+        run: |
+          lints <- lintr::lint_package()
+          print(lints)
+          if (length(lints)) quit(status = 1)
+        shell: Rscript {0}
+      - name: Require at least 90% test coverage
+        run: |
+          coverage <- covr::package_coverage(quiet = FALSE)
+          percent <- covr::percent_coverage(coverage)
+          print(coverage)
+          if (percent < 90) stop(sprintf("Coverage is %.2f%%; expected at least 90%%.", percent))
+        shell: Rscript {0}

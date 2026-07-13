@@ -1,0 +1,49 @@
+name: Bug report
+description: Report reproducible behavior in artcodex
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, authentication files, private prompts, or sensitive raw messages.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Provide the smallest R example that demonstrates the problem.
+      render: R
+    validations:
+      required: true
+  - type: input
+    id: r-version
+    attributes:
+      label: R version
+      placeholder: "R version 4.5.3"
+    validations:
+      required: true
+  - type: input
+    id: codex-version
+    attributes:
+      label: Codex CLI version
+      description: Run codex_version() and paste the result.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include sanitized errors or events that help explain the issue.

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use artcodex, please cite the software using this metadata."
+title: "artcodex: An R Client for Local Codex App-Server Sessions"
+type: software
+authors:
+  - family-names: Fatemi
+    given-names: Bobby
+version: 0.1.0
+date-released: 2026-07-13
+license: MIT
+repository-code: "https://github.com/bfatemi/artcodex"
+url: "https://github.com/bfatemi/artcodex"

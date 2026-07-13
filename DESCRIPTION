@@ -1,0 +1,29 @@
+Package: artcodex
+Title: An R Client for Local Codex App-Server Sessions
+Version: 0.1.0
+Authors@R:
+    person("Bobby", "Fatemi", email = "bfatemi@users.noreply.github.com",
+           role = c("aut", "cre", "cph"))
+Description: Controls local 'Codex' app-server sessions from R over the
+    standard input and output transport. It can start and resume threads,
+    stream events, handle server requests, interrupt turns, request structured
+    output, and retain serializable execution records for unattended
+    workflows.
+License: MIT + file LICENSE
+URL: https://github.com/bfatemi/artcodex
+BugReports: https://github.com/bfatemi/artcodex/issues
+Encoding: UTF-8
+Language: en-US
+Depends:
+    R (>= 4.1.0)
+Roxygen: list(markdown = TRUE)
+Imports:
+    jsonlite,
+    processx
+Suggests:
+    covr,
+    lintr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+SystemRequirements: Codex CLI with app-server support
+Config/roxygen2/version: 8.0.0
