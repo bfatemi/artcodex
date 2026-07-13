@@ -2,7 +2,7 @@ Package: artcodex
 Title: An R Client for Local Codex App-Server Sessions
 Version: 0.1.0
 Authors@R:
-    person("Bobby", "Fatemi", email = "bfatemi@users.noreply.github.com",
+    person("Bobby", "Fatemi", email = "bfatemi07@gmail.com",
            role = c("aut", "cre", "cph"))
 Description: Controls local 'Codex' app-server sessions from R over the
     standard input and output transport. It can start and resume threads,

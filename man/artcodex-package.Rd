@@ -20,11 +20,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Bobby Fatemi \email{bfatemi@users.noreply.github.com} [copyright holder]
+\strong{Maintainer}: Bobby Fatemi \email{bfatemi07@gmail.com} [copyright holder]
 
 Authors:
 \itemize{
-  \item Bobby Fatemi \email{bfatemi@users.noreply.github.com} [copyright holder]
+  \item Bobby Fatemi \email{bfatemi07@gmail.com} [copyright holder]
 }
 
 }
