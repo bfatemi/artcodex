@@ -127,6 +127,31 @@ artcodex_assert_function <- function(x, name) {
   invisible(x)
 }
 
+artcodex_validate_env <- function(env) {
+  invalid <- !is.null(env) && (
+    !is.character(env) ||
+      anyNA(env) ||
+      is.null(names(env)) ||
+      any(!nzchar(names(env)))
+  )
+  if (invalid) {
+    artcodex_abort(
+      "env must be a named character vector or NULL.",
+      "artcodex_validation_error"
+    )
+  }
+  invisible(env)
+}
+
+artcodex_process_env <- function(env) {
+  if (is.null(env)) {
+    return(NULL)
+  }
+  process_env <- Sys.getenv()
+  process_env[names(env)] <- env
+  process_env
+}
+
 artcodex_normalize_cwd <- function(cwd) {
   if (is.null(cwd)) {
     return(NULL)

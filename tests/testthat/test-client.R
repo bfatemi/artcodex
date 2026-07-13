@@ -148,7 +148,7 @@ test_that("Codex executable override is validated", {
 })
 
 test_that("Codex version command returns a trimmed version string", {
-  version <- codex_version(command = unname(Sys.which("Rscript")), timeout = 5)
+  version <- codex_version(command = fake_rscript_path(), timeout = 5)
 
   expect_match(version, "Rscript (R) version", fixed = TRUE)
   expect_error(

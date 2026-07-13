@@ -143,15 +143,7 @@ codex_client_start <- function(
   if (!is.character(args) || anyNA(args)) {
     artcodex_abort("args must be a character vector.", "artcodex_validation_error")
   }
-  invalid_env <- !is.null(env) && (
-    !is.character(env) ||
-      anyNA(env) ||
-      is.null(names(env)) ||
-      any(!nzchar(names(env)))
-  )
-  if (invalid_env) {
-    artcodex_abort("env must be a character vector or NULL.", "artcodex_validation_error")
-  }
+  artcodex_validate_env(env)
 
   process <- tryCatch(
     processx::process$new(
@@ -160,7 +152,7 @@ codex_client_start <- function(
       stdin = "|",
       stdout = "|",
       stderr = "|",
-      env = env,
+      env = artcodex_process_env(env),
       cleanup = TRUE
     ),
     error = function(error) {

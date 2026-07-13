@@ -6,6 +6,7 @@ test_that("schema generation supports current and custom launchers", {
     out = out,
     command = launcher$command,
     command_args = launcher$args[1:2],
+    env = launcher$env,
     timeout = 5
   )
   schema <- jsonlite::read_json(file.path(path, "fake-protocol.json"))
@@ -16,7 +17,8 @@ test_that("schema generation supports current and custom launchers", {
     codex_generate_schema(
       out = out,
       command = launcher$command,
-      command_args = launcher$args[1:2]
+      command_args = launcher$args[1:2],
+      env = launcher$env
     ),
     "already exists",
     class = "artcodex_validation_error"
@@ -28,7 +30,8 @@ test_that("schema generation supports current and custom launchers", {
     command_args = launcher$args[1:2],
     experimental = FALSE,
     overwrite = TRUE,
-    timeout = 5
+    timeout = 5,
+    env = launcher$env
   )
   replaced <- jsonlite::read_json(file.path(out, "fake-protocol.json"))
   expect_false(replaced$experimental)
@@ -54,7 +57,8 @@ test_that("schema generation reports validation and process failures", {
       out = tempfile("schema-"),
       command = launcher$command,
       command_args = c(launcher$args[1:2], "schema-fail"),
-      timeout = 5
+      timeout = 5,
+      env = launcher$env
     ),
     "simulated schema failure",
     class = "artcodex_process_error"

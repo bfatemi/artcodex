@@ -60,6 +60,7 @@ test_that("one-call mode starts and cleans up its own client", {
     cwd = tempdir(),
     command = launcher$command,
     client_args = launcher$args,
+    client_env = launcher$env,
     timeout = 2,
     client_timeout = 2
   )

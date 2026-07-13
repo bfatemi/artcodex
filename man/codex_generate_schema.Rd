@@ -10,7 +10,8 @@ codex_generate_schema(
   command_args = character(),
   experimental = TRUE,
   overwrite = FALSE,
-  timeout = 60
+  timeout = 60,
+  env = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ command. This is mainly useful with a custom launcher.}
 existing non-empty output directory.}
 
 \item{timeout}{Maximum number of seconds to wait.}
+
+\item{env}{Optional process environment overrides.}
 }
 \value{
 The normalized output directory path, invisibly.

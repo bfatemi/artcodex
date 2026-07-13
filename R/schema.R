@@ -11,6 +11,7 @@
 #' @param overwrite If `TRUE`, allow generated files to be written into an
 #'   existing non-empty output directory.
 #' @param timeout Maximum number of seconds to wait.
+#' @param env Optional process environment overrides.
 #' @return The normalized output directory path, invisibly.
 #' @export
 codex_generate_schema <- function(
@@ -19,12 +20,14 @@ codex_generate_schema <- function(
   command_args = character(),
   experimental = TRUE,
   overwrite = FALSE,
-  timeout = 60
+  timeout = 60,
+  env = NULL
 ) {
   artcodex_assert_string(out, "out")
   artcodex_assert_flag(experimental, "experimental")
   artcodex_assert_flag(overwrite, "overwrite")
   artcodex_assert_timeout(timeout)
+  artcodex_validate_env(env)
   command <- command %||% artcodex_find_codex()
   artcodex_assert_string(command, "command")
   if (!is.character(command_args) || anyNA(command_args)) {
@@ -62,6 +65,7 @@ codex_generate_schema <- function(
       command,
       args,
       timeout = timeout * 1000,
+      env = artcodex_process_env(env),
       error_on_status = FALSE
     ),
     error = function(error) {

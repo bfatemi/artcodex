@@ -94,6 +94,14 @@ test_that("working directory and policy validators normalize known values", {
   )
 })
 
+test_that("child process environment values are merged as overrides", {
+  env <- artcodex:::artcodex_process_env(c(ARTCODEX_FIXTURE = "yes"))
+
+  expect_equal(env[["ARTCODEX_FIXTURE"]], "yes")
+  expect_equal(env[["PATH"]], Sys.getenv("PATH"))
+  expect_null(artcodex:::artcodex_process_env(NULL))
+})
+
 test_that("public success and error helpers are status aware", {
   result <- structure(list(success = TRUE), class = "artcodex_result")
 
